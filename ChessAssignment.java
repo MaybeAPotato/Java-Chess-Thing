@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  * hacked expertly, by Connor
+ * oi oi oi  are fucking serious mate I'll punch ya in ye gobber
  */
 package chessassignment;
 import chessStuff.chessInterface;
