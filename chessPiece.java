@@ -11,8 +11,7 @@ package chessStuff;
  */
 public class chessPiece implements chessInterface{
     //Example would be
-    //Black Pawn
-    //1 Pawn
+    //P1
     //With that could read in first part as which player and second as which piece
     String pieceName;
     int posX;
