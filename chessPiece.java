@@ -20,10 +20,13 @@ public class chessPiece implements chessInterface{
     @Override
     public boolean canMoveTo(int x, int y){
         //Check if position is within the bounds of the board
-        if(x-1 > 7 || x-1 < 0){
+        x = x - 1;
+        y = y - 1;
+        
+        if(x > 7 || x < 0){
             return false;
         }
-        if(y-1 > 7 || y < 0){
+        if(y > 7 || y < 0){
             return false;
         }
         //If within the bounds of the board
