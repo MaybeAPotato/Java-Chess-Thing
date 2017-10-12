@@ -2,9 +2,6 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- * hacked expertly, by Connor
- * oi oi oi  are fucking serious mate I'll punch ya in ye gobber
- * Colombia Presente!!!
  */
 package chessassignment;
 import chessStuff.chessInterface;

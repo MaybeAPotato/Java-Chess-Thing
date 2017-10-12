@@ -20,7 +20,7 @@ public interface chessInterface {
     //Knight(C) - two squares horizontal or vertical then one square perpindicular
     //Queen - horizontal, vertical, and diagonal
     //King - one sqaure horizontal or vertical (will not check for check or checkmate, game will end once a players King is dead)
-    boolean canMoveTo(int x, int y);
+    boolean canMoveTo(int inputX, int inputY);
     //Will acutally move the piece
     void moveTo(int x, int y);
 }
