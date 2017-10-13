@@ -15,7 +15,7 @@ public class pieceQueen implements chessInterface{
     */
     
     String sPieceName;
-    int nPlayer;
+    int nPlayer; //The controlling player (P1 = 1, P2 = 2)
     int nX;
     int nY;
     
@@ -23,18 +23,41 @@ public class pieceQueen implements chessInterface{
     @Override
     public void setPlayer(int _nPlayer){ //Sets the piece's controlling player
         nPlayer = _nPlayer;
+        
+        if(nPlayer == 1){
+            sPieceName = "Q1";
+        }else if(nPlayer == 2){
+            sPieceName = "Q2";
+        }
     }
     
     
     @Override
     public void movePiece(int _nX, int _nY){ //Attempts to move piece
-        checkMove(_nX, _nY);
+        if(checkMove(_nX, _nY)){
+            nX = _nX;
+            nY = _nY;
+        }
     }
     
     
     @Override
     public boolean checkMove(int _nX, int _nY){ //Checks to see if move is possible
         onBoard(_nX, _nY);
+        
+        if(nX == _nX && nY != _nY){
+           //Check if pieces are vertically in the way
+           //return true 
+        }else if( nX != _nX && nY == _nY){
+            //Check if pieces are horizontally in the way
+           //return true
+        }
+        
+        if(Math.abs(nX - _nX) - Math.abs(nY - _nY) == 0 && nX != _nX){
+            //Check if piece is diagonally in the way
+            //return true;
+        }
+        
         return true;
     }
     

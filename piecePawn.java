@@ -15,7 +15,7 @@ public class piecePawn implements chessInterface{
     */
     
     String sPieceName;
-    int nPlayer;
+    int nPlayer; //The controlling player (P1 = 1, P2 = 2)
     int nX;
     int nY;
     

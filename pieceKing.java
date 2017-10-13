@@ -15,7 +15,7 @@ public class pieceKing implements chessInterface{
     */
     
     String sPieceName;
-    int nPlayer;
+    int nPlayer; //The controlling player (P1 = 1, P2 = 2)
     int nX;
     int nY;
     
@@ -23,6 +23,12 @@ public class pieceKing implements chessInterface{
     @Override
     public void setPlayer(int _nPlayer){ //Sets the piece's controlling player
         nPlayer = _nPlayer;
+        
+        if(nPlayer == 1){
+            sPieceName = "K1";
+        }else if(nPlayer == 2){
+            sPieceName = "K2";
+        }
     }
     
     
