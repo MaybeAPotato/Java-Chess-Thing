@@ -21,6 +21,7 @@ public class ChessAssignment {
     
     public void setBoard(chessInterface[][] _arBoard){
         /*
+        COORDINATES
         [0,0][1,0][2,0][3,0][4,0][5,0][6,0][7,0]
         [0,1][1,1][2,1][3,1][4,1][5,1][6,1][7,1]
         [0,2][1,2][2,2][3,2][4,2][5,2][6,2][7,2]
@@ -30,6 +31,19 @@ public class ChessAssignment {
         [0,6][1,6][2,6][3,6][4,6][5,6][6,6][7,6]
         [0,7][1,7][2,7][3,7][4,7][5,7][6,7][7,7]
         */
+        
+        /*
+        PIECES
+        [R1][C1][B1][K1][Q1][B1][C1][R1]
+        [P1][P1][P1][P1][P1][P1][P1][P1]
+        [  ][  ][  ][  ][  ][  ][  ][  ]
+        [  ][  ][  ][  ][  ][  ][  ][  ]
+        [  ][  ][  ][  ][  ][  ][  ][  ]
+        [  ][  ][  ][  ][  ][  ][  ][  ]
+        [P2][P2][P2][P2][P2][P2][P2][P2]
+        [R2][C2][B2][K2][Q2][B2][C2][R2]
+        */
+        
         for(int i = 0; i<8; i++){
             for(int j = 0; j<8; j++){
                 if(i<2){
@@ -66,18 +80,7 @@ public class ChessAssignment {
         arBoard[4][7] = new pieceQueen();
         
         arBoard[3][0] = new pieceKing();
-        arBoard[3][7] = new pieceKing();
-        
-        /*
-        [R1][C1][B1][K1][Q1][B1][C1][R1]
-        [P1][P1][P1][P1][P1][P1][P1][P1]
-        [  ][  ][  ][  ][  ][  ][  ][  ]
-        [  ][  ][  ][  ][  ][  ][  ][  ]
-        [  ][  ][  ][  ][  ][  ][  ][  ]
-        [  ][  ][  ][  ][  ][  ][  ][  ]
-        [P2][P2][P2][P2][P2][P2][P2][P2]
-        [R2][C2][B2][K2][Q2][B2][C2][R2]
-        */
+        arBoard[3][7] = new pieceKing();    
     }
     
     public void printBoard(){
