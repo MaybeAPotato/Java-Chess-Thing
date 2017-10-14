@@ -2,7 +2,7 @@ package chessStuff;
 
 //Connor's edition
 
-public class pieceRook implements Board{
+public class pieceRook implements pieceInterface{
     /*
     String pieceName formatting:
     King    = "K1/K2"
@@ -24,41 +24,60 @@ public class pieceRook implements Board{
     public void setPlayer(int _nPlayer){ //Sets the piece's controlling player
         nPlayer = _nPlayer;
         
-         if(nPlayer == 1){
+        if(nPlayer == 1){
             sPieceName = "R1";
         }else if(nPlayer == 2){
             sPieceName = "R2";
         }
     }
     
-    
     @Override
-    public void movePiece(int _nX, int _nY){ //Attempts to move piece
-        checkMove(_nX, _nY);
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
     }
     
-    
     @Override
-    public boolean checkMove(int _nX, int _nY){ //Checks to see if move is possible
-        onBoard(_nX, _nY);
-        return true;
-    }
-    
-    
-    @Override
-    public boolean onBoard(int _nX, int _nY){ //Checks to see if coordinates are on the board
-        if(_nX-1 > 7 || _nX-1 < 0) //Horizontal
-        {
-            return false;
+    public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
+        int nPiecePosX = _nX; // setting it as "enemy's position" to begin with to prevent it from stopping the turn unnecessarily
+        int nPiecePosY = _nY;
+        if (_nX > nX){
+            for (int nDistance = (_nX - nX); nDistance > 0; nDistance --){
+                if (_arBoard2[nX + nDistance][_nY] != 0) // stores the position of the most recently encountered enemy along the path
+                    nPiecePosX = nDistance;
+                if (_arBoard2[nX + nDistance][_nY] == nPlayer || nPiecePosX != _nX) // if the most recently encountered enemy along the path is NOT the final destination, then the player cannot move
+                    return false;
+                }
         }
-        else if(_nY-1 > 7 || _nY < 0) //Vertical
-        {
-            return false;
+        if (_nX < nX){
+            for (int nDistance = (nX - _nX); nDistance > 0; nDistance --){
+                if (_arBoard2[nX - nDistance][_nY] != 0) // stores the position of the most recently encountered enemy along the path
+                    nPiecePosX = nDistance;
+                if (_arBoard2[nX - nDistance][_nY] == nPlayer || nPiecePosX != _nX) // if the most recently encountered enemy along the path is NOT the final destination, then the player cannot move
+                    return false;
+                }
+        }
+        if (_nY > nY){
+            for (int nDistance = (_nY - nY); nDistance > 0; nDistance --){
+                if (_arBoard2[_nX][nY + nDistance] != 0) // stores the position of the most recently encountered enemy along the path
+                    nPiecePosY = nDistance;
+                if (_arBoard2[_nX][nY + nDistance] == nPlayer || nPiecePosY != _nY)
+                    return false;
+                }
+        }
+        if (_nY < nY){
+            for (int nDistance = (nY - _nY); nDistance > 0; nDistance --){
+                if (_arBoard2[_nX][nY - nDistance] != 0) // stores the position of the most recently encountered enemy along the path
+                    nPiecePosY = nDistance;
+                if (_arBoard2[_nX][nY - nDistance] == nPlayer || nPiecePosY != _nY)
+                    return false;
+                }
         }
         
+        nX = _nX;
+        nY = _nY;
         return true;
     }
-    
     
     @Override
     public String getName(){ //Get piece name

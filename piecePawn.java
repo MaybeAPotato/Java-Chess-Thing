@@ -2,7 +2,7 @@ package chessStuff;
 
 //Connor's edition
 
-public class piecePawn implements Board{
+public class piecePawn implements pieceInterface{
     /*
     String pieceName formatting:
     King    = "K1/K2"
@@ -31,34 +31,33 @@ public class piecePawn implements Board{
         }
     }
     
-    
     @Override
-    public void movePiece(int _nX, int _nY){ //Attempts to move piece
-        checkMove(_nX, _nY);
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
     }
     
-    
     @Override
-    public boolean checkMove(int _nX, int _nY){ //Checks to see if move is possible
-        onBoard(_nX, _nY);
-        return true;
-    }
-    
-    
-    @Override
-    public boolean onBoard(int _nX, int _nY){ //Checks to see if coordinates are on the board
-        if(_nX-1 > 7 || _nX-1 < 0) //Horizontal
-        {
-            return false;
+    public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
+        if(nPlayer == 1) {
+            if (_nY == nY + 1 && ((_nX == nX && _arBoard2[_nX][_nY] == 0) || (_arBoard2[_nX][_nY] == 2 && Math.abs(_nX - nX) == 1))){
+            }else if(nY == 1 && _nY == nY + 2 && _nX == nX && _arBoard2[_nX][_nY] == 0){
+            }else{
+                return false;
+            }
         }
-        else if(_nY-1 > 7 || _nY < 0) //Vertical
-        {
-            return false;
+        if(nPlayer == 2){
+            if(_nY == nY - 1 && ((_nX == nX && _arBoard2[_nX][_nY] == 0) || (_arBoard2[_nX][_nY] == 1 && Math.abs(_nX - nX) == 1))){
+            }else if(nY == 6 && _nY == nY - 2 && _nX == nX && _arBoard2[_nX][_nY] == 0){
+            }else{
+                return false;
+            }
         }
         
+        nX = _nX;
+        nY = _nY;
         return true;
     }
-    
     
     @Override
     public String getName(){ //Get piece name
