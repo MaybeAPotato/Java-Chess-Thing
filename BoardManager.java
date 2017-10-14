@@ -92,10 +92,12 @@ public class BoardManager {
                 if(i<2){                            //Top 2 rows of the board
                     arBoard2[j][i] = 1;             //Set arBoard2[x][y] to P1
                     arBoard[j][i].setPlayer(1);     //Set piece controller to P1
+                    arBoard[j][i].setPos(j, i);     //Set piece position
                     
                 }else if(i>5){                      //Bottom 2 rows of the board
                     arBoard2[j][i] = 2;             //Set arBoard2[x][y] to P2
                     arBoard[j][i].setPlayer(2);     //Set piece controller to P2
+                    arBoard[j][i].setPos(j, i);     //Set piece position
                     
                 }else{
                     arBoard2[j][i] = 0;             //Board position is empty
@@ -124,7 +126,7 @@ public class BoardManager {
         
     }
     
-    
+    //Manages the turn
     public void playerTurn(){
 
         System.out.println();
@@ -140,7 +142,7 @@ public class BoardManager {
         }
     }
     
-    
+    //Player selects a piece
     public boolean pieceSelection(){
         
         System.out.println("Enter the X coordinate (0-7) of the piece you want to move.");
@@ -158,14 +160,15 @@ public class BoardManager {
         return true;
     }
     
+    //Attempts to move a piece
     public boolean pieceMovement(){
         System.out.println("Enter the X coordinate (0-7) of the space you want to move.");
         nMoveX = scScanner.nextInt();
-        if(checkBounds(nPieceX) == false){ return false; } //Checks if X coord is valid
+        if(checkBounds(nMoveX) == false){ return false; } //Checks if X coord is valid
         
         System.out.println("Enter the Y coordinate (0-7) of the space you want to move.");
         nMoveY = scScanner.nextInt();
-        if(checkBounds(nPieceY) == false){ return false; } //Checks if Y coord is valid
+        if(checkBounds(nMoveY) == false){ return false; } //Checks if Y coord is valid
         
         if(arBoard[nPieceX][nPieceY].movePiece(nMoveX, nMoveY, arBoard2) == true){ //If the move is valid
             arBoard[nMoveX][nMoveY] = arBoard[nPieceX][nPieceY]; //Moves piece to new location
@@ -180,7 +183,7 @@ public class BoardManager {
         return true;
     }
     
-    
+    //Checks boundaries of the board
     public boolean checkBounds(int _nCoord){
         if(_nCoord < 0 || _nCoord > 7){
             System.out.println("Invalid coordinate.  Please try again.");

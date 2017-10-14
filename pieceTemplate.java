@@ -31,6 +31,12 @@ public class pieceTemplate implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
+    
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
@@ -42,13 +48,5 @@ public class pieceTemplate implements pieceInterface{
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }

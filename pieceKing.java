@@ -31,11 +31,20 @@ public class pieceKing implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
         
         if(_nX > nX + 1 || _nX < nX - 1 || _nY > nY + 1 || _nY < nY - 1 || (_nX == 0 && _nY == 0)){
+            return false;
+        }
+        
+        if(_arBoard2[_nX][_nY] == nPlayer){
             return false;
         }
         
@@ -47,13 +56,5 @@ public class pieceKing implements pieceInterface{
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }

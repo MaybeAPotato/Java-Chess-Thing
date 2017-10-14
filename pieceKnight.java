@@ -31,47 +31,38 @@ public class pieceKnight implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        //nX = _nX;
-        //nY = _nY;
-        //return true;
         
         if(_nX == nX + 2 && _nY == nY + 1 || _nY == nY - 1){
-                nX = _nX;
-                nY = _nY;
-                return true;
-            }
-            else if(_nX == nX - 2 && _nY == nY + 1 || _nY == nY - 1){
-                nX = _nX;
-                nY = _nY;
-                return true;
-            }
-            if(_nY == nY + 2 && _nX == nX + 1 || _nX == nX - 1){
-                nX = _nX;
-                nY = _nY;
-                return true;
-            }
-            else if(_nY == nY - 2 && _nX == nX + 1 || _nX == nX - 1){
-                nX = _nX;
-                nY = _nY;
-                return true;
-            }
-            else
-                return false;
+        }
+        else if(_nX == nX - 2 && _nY == nY + 1 || _nY == nY - 1){
+        }
+        else if(_nY == nY + 2 && _nX == nX + 1 || _nX == nX - 1){
+        }
+        else if(_nY == nY - 2 && _nX == nX + 1 || _nX == nX - 1){
+        }
+        else{
+            return false;
+        }
+        
+        if(_arBoard2[_nX][_nY] == nPlayer){
+            return false;
+        }
+        
+        nX = _nX;
+        nY = _nY;
+        return true;
     }
     
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }

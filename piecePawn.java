@@ -31,16 +31,27 @@ public class piecePawn implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
         if(nPlayer == 1) {
-            if (_nY != nY + 1 || _nX != nX)
-            return false;
+            if (_nY == nY + 1 && ((_nX == nX && _arBoard2[_nX][_nY] == 0) || (_arBoard2[_nX][_nY] == 2 && Math.abs(_nX - nX) == 1))){
+            }else if(nY == 1 && _nY == nY + 2 && _nX == nX && _arBoard2[_nX][_nY] == 0){
+            }else{
+                return false;
+            }
         }
         if(nPlayer == 2){
-            if(_nY != nY - 1 || _nX != nX)
-            return false;
+            if(_nY == nY - 1 && ((_nX == nX && _arBoard2[_nX][_nY] == 0) || (_arBoard2[_nX][_nY] == 1 && Math.abs(_nX - nX) == 1))){
+            }else if(nY == 6 && _nY == nY - 2 && _nX == nX && _arBoard2[_nX][_nY] == 0){
+            }else{
+                return false;
+            }
         }
         
         nX = _nX;
@@ -51,13 +62,5 @@ public class piecePawn implements pieceInterface{
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }

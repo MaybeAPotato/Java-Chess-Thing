@@ -31,13 +31,14 @@ public class pieceBishop implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        if(Math.abs(_nX-nX) - Math.abs(_nY-nY) != 0){
-            return false;
-        }
-        
         nX = _nX;
         nY = _nY;
         return true;
@@ -46,13 +47,5 @@ public class pieceBishop implements pieceInterface{
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }

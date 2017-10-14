@@ -31,37 +31,21 @@ public class pieceQueen implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        if(Math.abs(_nX-nX) - Math.abs(_nY-nY) == 0){
-            nX = _nX;
-            nY = _nY;
-            return true;
-        }
-        else if (_nX == nX && _nY != nY || _nX != nX && _nY == nY){
-            nX = _nX;
-            nY = _nY;    
-            return true;
-        }
-        else
-            return false;
-        
-        //nX = _nX;
-        //nY = _nY;
-        //return true;
+        nX = _nX;
+        nY = _nY;
+        return true;
     }
     
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }

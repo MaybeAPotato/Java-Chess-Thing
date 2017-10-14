@@ -31,37 +31,14 @@ public class pieceRook implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        if(_nX != nX && _nY != nY && (_nX != 0 || _nY != 0)){
-            return false;
-        }
-        if (_nX > nX){
-            for (int nDistance = (_nX - nX); nDistance > 0; nDistance --){
-            if (_arBoard2[nX + nDistance][_nY] > 0)
-                return false;
-            }
-        }
-        if (_nX < nX){
-            for (int nDistance = (nX - _nX); nDistance > 0; nDistance ++){
-            if (_arBoard2[nX - nDistance][_nY] > 0)
-                return false;
-            }
-        }
-        if (_nY > nY){
-            for (int nDistance = (_nY - nY); nDistance > 0; nDistance --){
-            if (_arBoard2[_nX][nY + nDistance] > 0)
-                return false;
-            }
-        }
-        if (_nY < nY){
-            for (int nDistance = (nY - _nY); nDistance > 0; nDistance --){
-            if (_arBoard2[_nX][nY - nDistance] > 0)
-                return false;
-            }
-        }
-        
         nX = _nX;
         nY = _nY;
         return true;
@@ -70,13 +47,5 @@ public class pieceRook implements pieceInterface{
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }
