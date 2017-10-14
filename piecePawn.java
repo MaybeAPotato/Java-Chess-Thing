@@ -34,6 +34,15 @@ public class piecePawn implements pieceInterface{
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
+        if(pieceName == "P1") {
+            if (inputY != posY + 1 || inputX != posX)
+            return false;
+        }
+        if(pieceName == "P2"){
+            if(inputY != posY - 1 || inputX != posX)
+            return false;
+        }
+        
         nX = _nX;
         nY = _nY;
         return true;
