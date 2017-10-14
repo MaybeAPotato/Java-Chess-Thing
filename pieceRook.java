@@ -44,7 +44,7 @@ public class pieceRook implements pieceInterface{
             }
         }
         if (_nX < nX){
-            for (int nDistance = (nX - _nX); nDistance > 0; nDistance ++){
+            for (int nDistance = (nX - _nX); nDistance > 0; nDistance --){
             if (_arBoard2[nX - nDistance][_nY] > 0)
                 return false;
             }
