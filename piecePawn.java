@@ -2,7 +2,7 @@ package chessStuff;
 
 //Connor's edition
 
-public class piecePawn implements chessInterface{
+public class piecePawn implements pieceInterface{
     /*
     String pieceName formatting:
     King    = "K1/K2"
@@ -33,35 +33,22 @@ public class piecePawn implements chessInterface{
     
     
     @Override
-    public void movePiece(int _nX, int _nY){ //Attempts to move piece
-        checkMove(_nX, _nY);
-    }
-    
-    
-    @Override
-    public boolean checkMove(int _nX, int _nY){ //Checks to see if move is possible
-        onBoard(_nX, _nY);
+    public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
+        nX = _nX;
+        nY = _nY;
         return true;
     }
-    
-    
-    @Override
-    public boolean onBoard(int _nX, int _nY){ //Checks to see if coordinates are on the board
-        if(_nX-1 > 7 || _nX-1 < 0) //Horizontal
-        {
-            return false;
-        }
-        else if(_nY-1 > 7 || _nY < 0) //Vertical
-        {
-            return false;
-        }
-        
-        return true;
-    }
-    
     
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
+    }
+    
+    public int getX(){ //Get X position
+        return nX;
+    }
+    
+    public int getY(){ //Get Y position
+        return nY;
     }
 }

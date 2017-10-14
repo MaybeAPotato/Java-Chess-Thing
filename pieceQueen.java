@@ -2,7 +2,7 @@ package chessStuff;
 
 //Connor's edition
 
-public class pieceQueen implements chessInterface{
+public class pieceQueen implements pieceInterface{
     /*
     String pieceName formatting:
     King    = "K1/K2"
@@ -33,52 +33,22 @@ public class pieceQueen implements chessInterface{
     
     
     @Override
-    public void movePiece(int _nX, int _nY){ //Attempts to move piece
-        if(checkMove(_nX, _nY)){
-            nX = _nX;
-            nY = _nY;
-        }
-    }
-    
-    
-    @Override
-    public boolean checkMove(int _nX, int _nY){ //Checks to see if move is possible
-        onBoard(_nX, _nY);
-        
-        if(nX == _nX && nY != _nY){
-           //Check if pieces are vertically in the way
-           //return true 
-        }else if( nX != _nX && nY == _nY){
-            //Check if pieces are horizontally in the way
-           //return true
-        }
-        
-        if(Math.abs(nX - _nX) - Math.abs(nY - _nY) == 0 && nX != _nX){
-            //Check if piece is diagonally in the way
-            //return true;
-        }
-        
+    public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
+        nX = _nX;
+        nY = _nY;
         return true;
     }
-    
-    
-    @Override
-    public boolean onBoard(int _nX, int _nY){ //Checks to see if coordinates are on the board
-        if(_nX-1 > 7 || _nX-1 < 0) //Horizontal
-        {
-            return false;
-        }
-        else if(_nY-1 > 7 || _nY < 0) //Vertical
-        {
-            return false;
-        }
-        
-        return true;
-    }
-    
     
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
+    }
+    
+    public int getX(){ //Get X position
+        return nX;
+    }
+    
+    public int getY(){ //Get Y position
+        return nY;
     }
 }
