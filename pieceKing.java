@@ -35,8 +35,9 @@ public class pieceKing implements pieceInterface{
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
         
-        if(inputX > posX + 1 || inputX < posX - 1 || inputY > posY + 1 || inputY < posY - 1)
+        if(_nX > posX + 1 || _nX < posX - 1 || _nY > posY + 1 || _nY < posY - 1 || (_nX == 0 && _nY == 0)){
             return false;
+        }
         
         nX = _nX;
         nY = _nY;
