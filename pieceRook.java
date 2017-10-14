@@ -37,15 +37,31 @@ public class pieceRook implements pieceInterface{
         if(_nX != nX && _nY != nY && (_nX != 0 || _nY != 0)){
             return false;
         }
+        if (_nX > nX){
+            for (int nDistance = (_nX - nX); nDistance > 0; nDistance --){
+            if (_arBoard2[nX + nDistance][_nY] > 0)
+                return false;
+            }
+        }
+        if (_nX < nX){
+            for (int nDistance = (nX - _nX); nDistance > 0; nDistance ++){
+            if (_arBoard2[nX - nDistance][_nY] > 0)
+                return false;
+            }
+        }
+        if (_nY > nY){
+            for (int nDistance = (_nY - nY); nDistance > 0; nDistance --){
+            if (_arBoard2[_nX][nY + nDistance] > 0)
+                return false;
+            }
+        }
+        if (_nY < nY){
+            for (int nDistance = (nY - _nY); nDistance > 0; nDistance --){
+            if (_arBoard2[_nX][nY - nDistance] > 0)
+                return false;
+            }
+        }
         
-        for (int nDistance = _nX - nX; nDistance < 0; ndistance --){
-            if (arBoard2[nDistance][_nY] < 0)
-                return false;
-        }
-        for (int nDistance = _nY - nY; nDistance < 0; ndistance --){
-            if (arBoard2[_nX][nDistanceY] < 0)
-                return false;
-        }
         nX = _nX;
         nY = _nY;
         return true;
