@@ -34,12 +34,12 @@ public class pieceQueen implements pieceInterface{
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        if(Math.abs(inputX-posX) - Math.abs(inputY-posY) == 0){
+        if(Math.abs(_nX-nX) - Math.abs(_nY-nY) == 0){
             nX = _nX;
             nY = _nY;
             return true;
         }
-        else if (inputX == posX && inputY != posY || inputX != posX && inputY == posY){
+        else if (_nX == nX && _nY != nY || _nX != nX && _nY == nY){
             nX = _nX;
             nY = _nY;    
             return true;
