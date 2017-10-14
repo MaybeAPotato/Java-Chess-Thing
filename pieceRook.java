@@ -31,35 +31,55 @@ public class pieceRook implements pieceInterface{
         }
     }
     
+    @Override
+    public void setPos(int _nX, int _nY){
+        nX = _nX;
+        nY = _nY;
+    }
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        if(_nX != nX && _nY != nY && (_nX != 0 || _nY != 0)){
-            return false;
-        }
+        int nEnemyPosX = _nX; // setting it as "enemy's position" to begin with to prevent it from stopping the turn unnecessarily
+        int nEnemyPosY = _nY;
         if (_nX > nX){
             for (int nDistance = (_nX - nX); nDistance > 0; nDistance --){
-            if (_arBoard2[nX + nDistance][_nY] > 0)
-                return false;
-            }
+                if ( nPlayer == 1 && _arBoard2[nX + nDistance][_nY] == 2) // stores the position of the most recently encountered enemy along the path
+                    nEnemyPosX = nDistance;
+                else if (nPlayer == 2 && _arBoard2[nX + nDistance][_nY] == 1)
+                    nEnemyPosX = nDistance;
+                if (_arBoard2[nX + nDistance][_nY] == nPlayer || nEnemyPosX != _nX) // if the most recently encountered enemy along the path is NOT the final destination, then the player cannot move
+                    return false;
+                }
         }
         if (_nX < nX){
             for (int nDistance = (nX - _nX); nDistance > 0; nDistance --){
-            if (_arBoard2[nX - nDistance][_nY] > 0)
-                return false;
-            }
+                if ( nPlayer == 1 && _arBoard2[nX - nDistance][_nY] == 2) // stores the position of the most recently encountered enemy along the path
+                    nEnemyPosX = nDistance;
+                else if (nPlayer == 2 && _arBoard2[nX - nDistance][_nY] == 1)
+                    nEnemyPosX = nDistance;
+                if (_arBoard2[nX - nDistance][_nY] == nPlayer || nEnemyPosX != _nX) // if the most recently encountered enemy along the path is NOT the final destination, then the player cannot move
+                    return false;
+                }
         }
         if (_nY > nY){
             for (int nDistance = (_nY - nY); nDistance > 0; nDistance --){
-            if (_arBoard2[_nX][nY + nDistance] > 0)
-                return false;
-            }
+                if ( nPlayer == 1 && _arBoard2[_nX][nY + nDistance] == 2) // stores the position of the most recently encountered enemy along the path
+                    nEnemyPosY = nDistance;
+                else if (nPlayer == 2 && _arBoard2[_nX][nY + nDistance] == 1)
+                    nEnemyPosY = nDistance;
+                if (_arBoard2[_nX][nY + nDistance] == nPlayer || nEnemyPosY != _nY)
+                    return false;
+                }
         }
         if (_nY < nY){
             for (int nDistance = (nY - _nY); nDistance > 0; nDistance --){
-            if (_arBoard2[_nX][nY - nDistance] > 0)
-                return false;
-            }
+                if ( nPlayer == 1 && _arBoard2[_nX][nY - nDistance] == 2) // stores the position of the most recently encountered enemy along the path
+                    nEnemyPosY = nDistance;
+                else if (nPlayer == 2 && _arBoard2[_nX][nY - nDistance] == 1)
+                    nEnemyPosY = nDistance;
+                if (_arBoard2[_nX][nY - nDistance] == nPlayer || nEnemyPosY != _nY)
+                    return false;
+                }
         }
         
         nX = _nX;
@@ -70,13 +90,5 @@ public class pieceRook implements pieceInterface{
     @Override
     public String getName(){ //Get piece name
         return sPieceName;
-    }
-    
-    public int getX(){ //Get X position
-        return nX;
-    }
-    
-    public int getY(){ //Get Y position
-        return nY;
     }
 }
