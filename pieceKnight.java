@@ -34,9 +34,32 @@ public class pieceKnight implements pieceInterface{
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        nX = _nX;
-        nY = _nY;
-        return true;
+        //nX = _nX;
+        //nY = _nY;
+        //return true;
+        
+        if(inputX == posX + 2 &&inputY == posY + 1 || inputY == posY - 1){
+                nX = _nX;
+                nY = _nY;
+                return true;
+            }
+            else if(inputX == posX - 2 && inputY == posY + 1 || inputY == posY - 1){
+                nX = _nX;
+                nY = _nY;
+                return true;
+            }
+            if(inputY == posY + 2 && inputX == posX + 1 || inputX == posX - 1){
+                nX = _nX;
+                nY = _nY;
+                return true;
+            }
+            else if(inputY == posY - 2 && inputX == posX + 1 || inputX == posX - 1){
+                nX = _nX;
+                nY = _nY;
+                return true;
+            }
+            else
+                return false;
     }
     
     @Override
