@@ -22,5 +22,5 @@ public interface chessInterface {
     //King - one sqaure horizontal or vertical (will not check for check or checkmate, game will end once a players King is dead)
     boolean canMoveTo(int inputX, int inputY);
     //Will acutally move the piece
-    void moveTo(int x, int y);
+    void moveTo(int row, int col);
 }
