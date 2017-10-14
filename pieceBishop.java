@@ -34,8 +34,9 @@ public class pieceBishop implements pieceInterface{
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        if(Math.abs(inputX-posX) - Math.abs(inputY-posY) != 0)
+        if(Math.abs(_nX-nX) - Math.abs(_nY-nY) != 0){
             return false;
+        }
         
         nX = _nX;
         nY = _nY;
