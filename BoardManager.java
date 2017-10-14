@@ -191,4 +191,31 @@ public class BoardManager {
         }
         return true;
     }
+    
+        public void checkKing(){
+        boolean playerOneKing = false;
+        boolean playerTwoKing = false;
+        
+        for(int i = 0; i < arBoard[0].length; i++){
+        for(int j = 0; j < arBoard[1].length; j++){
+            if(arBoard[i][j] != null){
+                if(arBoard[i][j].getName().equalsIgnoreCase("K1")){
+                    playerOneKing = true;
+                }
+                else if(arBoard[i][j].getName().equalsIgnoreCase("K2")){
+                    playerTwoKing = true;
+                }
+            }
+            }
+        }
+        
+        if(playerOneKing == false){
+            winCheck = 2;
+            gameOver = true;
+        }
+        else if(playerTwoKing == false){
+            winCheck = 1;
+            gameOver = true;
+        }
+    }
 }
