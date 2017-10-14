@@ -34,7 +34,7 @@ public class pieceRook implements pieceInterface{
     
     @Override
     public boolean movePiece(int _nX, int _nY,  int[][] _arBoard2){ //Attempts to move piece
-        if(_nX != nX && _nY != posY && (_nX != 0 || _nY != 0)){
+        if(_nX != nX && _nY != nY && (_nX != 0 || _nY != 0)){
             return false;
         }
         
