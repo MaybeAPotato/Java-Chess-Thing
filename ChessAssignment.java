@@ -21,10 +21,13 @@ public class ChessAssignment {
         
         objBoard.setBoard();
         
-        while(true){
+        while(objBoard.gameOver == false){
             System.out.println();
             objBoard.printBoard();
             objBoard.playerTurn();
+            objBoard.checkKing();
         }
+        
+        System.out.println("---------------GAME OVER---------------\tPlayer "+objBoard.winCheck +" wins");
     }
 }
