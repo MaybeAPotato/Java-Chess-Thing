@@ -38,22 +38,22 @@ public class pieceKnight implements pieceInterface{
         //nY = _nY;
         //return true;
         
-        if(inputX == posX + 2 &&inputY == posY + 1 || inputY == posY - 1){
+        if(_nX == nX + 2 && _nY == nY + 1 || _nY == nY - 1){
                 nX = _nX;
                 nY = _nY;
                 return true;
             }
-            else if(inputX == posX - 2 && inputY == posY + 1 || inputY == posY - 1){
+            else if(_nX == nX - 2 && _nY == nY + 1 || _nY == nY - 1){
                 nX = _nX;
                 nY = _nY;
                 return true;
             }
-            if(inputY == posY + 2 && inputX == posX + 1 || inputX == posX - 1){
+            if(_nY == nY + 2 && _nX == nX + 1 || _nX == nX - 1){
                 nX = _nX;
                 nY = _nY;
                 return true;
             }
-            else if(inputY == posY - 2 && inputX == posX + 1 || inputX == posX - 1){
+            else if(_nY == nY - 2 && _nX == nX + 1 || _nX == nX - 1){
                 nX = _nX;
                 nY = _nY;
                 return true;
