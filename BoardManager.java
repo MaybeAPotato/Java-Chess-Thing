@@ -24,6 +24,10 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 public class BoardManager {
+    int winCheck = 0;
+    boolean     gameOver = false;
+    
+    
     
     pieceInterface[][] arBoard = new pieceInterface[8][8]; //Board is 8 by 8
     int[][] arBoard2 = new int[8][8]; //Tracks who controls what pieces
