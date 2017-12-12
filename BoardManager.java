@@ -8,8 +8,20 @@ import chessStuff.pieceBishop;
 import chessStuff.pieceQueen;
 import chessStuff.pieceKing;
 import chessStuff.pieceInterface;
-//Scanner
+
+//IO
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
+//Utils
 import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 public class BoardManager {
     
@@ -106,6 +118,80 @@ public class BoardManager {
         }
         
     }
+    
+    //HI PHILIP, NICK, AND KEVIN  -- THIS IS THE FIRST NEW CODE FUNCTION.  USE IT FRIENDOS.
+    public void loadBoard() throws IOException{
+        String sToken;
+        String sPiece;
+        int nTempX = 0;
+        int nTempY = 0;
+        int nTempPlayer = 0;
+        boolean bFirst = true;
+        
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                arBoard2[j][i] = 0;             //Board set to empty
+            }
+        }
+
+        
+        try (BufferedReader brReader = new BufferedReader(new FileReader("save.txt"))) {
+            while ((sPiece = brReader.readLine()) != null) {
+                StringTokenizer st = new StringTokenizer(sPiece, " ");
+                    
+                if (bFirst == true) {
+                    sToken = st.nextToken();
+                    nPlayerTurn = Integer.parseInt(sToken);
+                    bFirst = false;
+                } else {
+                    
+                    sToken = st.nextToken();
+                    nTempX = Integer.parseInt(sToken);
+                    
+                    sToken = st.nextToken();
+                    nTempY = Integer.parseInt(sToken);
+                    
+                    sPiece = st.nextToken();
+                    
+                    sToken = st.nextToken();
+                    nTempPlayer = Integer.parseInt(sToken);
+                    
+
+                    if (sPiece == "P") {
+                        arBoard[nTempX][nTempY] = new piecePawn();
+                    } else if (sPiece == "K") {
+                        arBoard[nTempX][nTempY] = new pieceKing();
+                    } else if (sPiece == "Q") {
+                        arBoard[nTempX][nTempY] = new pieceQueen();
+                    } else if (sPiece == "C") {
+                        arBoard[nTempX][nTempY] = new pieceKnight();
+                    } else if (sPiece == "R") {
+                        arBoard[nTempX][nTempY] = new pieceRook();
+                    } else if (sPiece == "B") {
+                        arBoard[nTempX][nTempY] = new pieceBishop();
+                    }
+                }
+
+                arBoard[nTempX][nTempY].setPlayer(nTempPlayer);
+            }
+        }
+    }
+    
+    //HI AGAIN  -- THIS IS THE SECOND NEW CODE FUNCTION.  USE IT ALSO.
+    public void saveBoard() throws IOException{
+        
+        PrintWriter fileSave = new PrintWriter("save.txt", "rw");
+        
+        fileSave.println(nPlayerTurn);
+        
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(arBoard2[j][i] != 0){
+                    fileSave.println(j + " " + i + " " + arBoard[j][i] + " " + arBoard2[j][i]);
+                }             
+            }
+        }
+    }
 
     
     public void printBoard(){
@@ -190,32 +276,5 @@ public class BoardManager {
             return false;
         }
         return true;
-    }
-    
-        public void checkKing(){
-        boolean playerOneKing = false;
-        boolean playerTwoKing = false;
-        
-        for(int i = 0; i < arBoard[0].length; i++){
-        for(int j = 0; j < arBoard[1].length; j++){
-            if(arBoard[i][j] != null){
-                if(arBoard[i][j].getName().equalsIgnoreCase("K1")){
-                    playerOneKing = true;
-                }
-                else if(arBoard[i][j].getName().equalsIgnoreCase("K2")){
-                    playerTwoKing = true;
-                }
-            }
-            }
-        }
-        
-        if(playerOneKing == false){
-            winCheck = 2;
-            gameOver = true;
-        }
-        else if(playerTwoKing == false){
-            winCheck = 1;
-            gameOver = true;
-        }
     }
 }
