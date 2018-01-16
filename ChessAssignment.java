@@ -1,37 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chessassignment;
-import chessStuff.chessInterface;
-import chessStuff.chessPiece;
 
-/**
- *
- * @author User
- */
-public class ChessAssignment {
+/*
+//The Board
+import chessassignment.BoardManager;
+//The Pieces
+import chessStuff.piecePawn;
+import chessStuff.pieceRook;
+import chessStuff.pieceKnight;
+import chessStuff.pieceBishop;
+import chessStuff.pieceQueen;
+import chessStuff.pieceKing;
+import chessStuff.pieceInterface;*/
 
-    /**
-     * @param args the command line arguments
-     */
+
+//Connor's edition
+
+public class ChessAssignment{
     public static void main(String[] args) {
-        // TODO code application logic here
-        //Chess boards are 8 by 8                        [y][x]
-        chessInterface[][] gameBoard = new chessInterface[8][8];
+        BoardManager objBoard = new BoardManager();
         
-        for(int i = 0; i < gameBoard[0].length; i++){
-            for(int j = 0; j < gameBoard[1].length; j++){
-                if(i == 3 && j == 3){
-                    gameBoard[3][3] = new chessPiece("K1",3,3);
-                }
-                else{
-                    gameBoard[i][j] = new chessPiece("  ",i,j);
-                }
-            }
+        objBoard.launchGame();
+        
+        while(objBoard.gameOver == false){
+            System.out.println();
+            objBoard.printBoard();
+            objBoard.playerTurn();
+            objBoard.checkKing();
+            //objBoard.exitGame();
         }
         
-        gameBoard[3][3].moveTo(3,3);
+        System.out.println("---------------GAME OVER---------------\tPlayer "+objBoard.winCheck +" wins");
     }
 }
