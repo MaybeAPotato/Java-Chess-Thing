@@ -19,12 +19,12 @@ public class ChessAssignment{
     public static void main(String[] args) {
         BoardManager objBoard = new BoardManager();
         
-        objBoard.launchGame();
-        
+        //objBoard.launchGame();
+        objBoard.setBoard();
         while(objBoard.gameOver == false){
-            System.out.println();
-            objBoard.printBoard();
-            objBoard.playerTurn();
+            //System.out.println();
+            //objBoard.printBoard();
+            //objBoard.playerTurn();
             objBoard.checkKing();
             //objBoard.exitGame();
         }

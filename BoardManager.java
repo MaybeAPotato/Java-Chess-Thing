@@ -138,7 +138,6 @@ public class BoardManager extends JPanel{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(200, 200, 1280, 720);
         frame.setVisible(true);
-        
         initComponents();
     }
     
@@ -285,7 +284,7 @@ public class BoardManager extends JPanel{
     public void playerTurn(){
 
         System.out.println();
-        System.out.println("PLAYER " + nPlayerTurn);
+        //System.out.println("PLAYER " + nPlayerTurn);
         
         //Player selects piece
         if(nPhase == 0){
@@ -308,12 +307,6 @@ public class BoardManager extends JPanel{
         //If the player wants to play
         //System.out.println("Enter the X coordinate (0-7) of the piece you want to move.");
         //nPieceX = scScanner.nextInt();
-        try{
-        buttons.wait();
-        }
-        catch(InterruptedException e){
-            System.out.println(e.toString());
-        }
         if(checkBounds(nPieceX) == false){ return false; } //Checks if X coord is valid
         
         //System.out.println("Enter the Y coordinate (0-7) of the piece you want to move.");
@@ -440,17 +433,19 @@ public class BoardManager extends JPanel{
             buttons[i][j] = new JButton("");
             buttons[i][j].setFont(new Font("Arial", Font.BOLD, 50));
             buttons[i][j].setText(arBoard[j][i].getName());
+            int width = this.getWidth()/8;
+            int height = this.getHeight()/8;
             buttons[i][j].addActionListener(new ActionListener() {    
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton button = (JButton)e.getSource();
                     if(nPhase == 0){
-                        nPieceX = button.getX();
-                        nPieceY = button.getY();
+                        nPieceX = button.getX()/width;
+                        nPieceY = button.getY()/height;
                     }
                     else{
-                        nMoveX = button.getX()-1;
-                        nMoveY = button.getY()-1;
+                        nMoveX = button.getX()/width;
+                        nMoveY = button.getY()/height;
                     }
                 }
             });
